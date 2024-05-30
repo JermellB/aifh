@@ -105,7 +105,7 @@ public class NormalizeTitanic {
             boolean survived = false;
             if (survivedIndex != -1) {
                 String survivedStr = nextLine[survivedIndex];
-                survived = survivedStr.equals("1");
+                survived = "1".equals(survivedStr);
             }
 
             if (indexEmbarked != -1) {
@@ -117,26 +117,26 @@ public class NormalizeTitanic {
             if (strFare.length() > 0) {
                 double fare = Double.parseDouble(strFare);
                 String pclass = nextLine[indexPclass];
-                if (pclass.equals("1")) {
+                if ("1".equals(pclass)) {
                     stats.getMeanFare1().update(fare);
-                } else if (pclass.equals("2")) {
+                } else if ("2".equals(pclass)) {
                     stats.getMeanFare2().update(fare);
-                } else if (pclass.equals("3")) {
+                } else if ("3".equals(pclass)) {
                     stats.getMeanFare3().update(fare);
                 }
             }
 
 
-            boolean isMale = sexStr.equalsIgnoreCase("male");
+            boolean isMale = "male".equalsIgnoreCase(sexStr);
             double age;
 
             // Only compute survival stats on training data
             if (survivedIndex != -1) {
-                if (embarkedStr.equals("Q")) {
+                if ("Q".equals(embarkedStr)) {
                     stats.getEmbarkedQ().update(isMale, survived);
-                } else if (embarkedStr.equals("S")) {
+                } else if ("S".equals(embarkedStr)) {
                     stats.getEmbarkedS().update(isMale, survived);
-                } else if (embarkedStr.equals("C")) {
+                } else if ("C".equals(embarkedStr)) {
                     stats.getEmbarkedC().update(isMale, survived);
                 }
             }
@@ -297,7 +297,7 @@ public class NormalizeTitanic {
                 ids.add(id);
             }
 
-            boolean isMale = sex.equalsIgnoreCase("male");
+            boolean isMale = "male".equalsIgnoreCase(sex);
 
 
             // age
@@ -372,13 +372,13 @@ public class NormalizeTitanic {
             data.getInput()[5] = rangeNormalize(fare, 0, 500, inputLow, inputHigh);
 
             // embarked-c
-            data.getInput()[6] = embarked.trim().equalsIgnoreCase("c") ? inputHigh : inputLow;
+            data.getInput()[6] = "c".equalsIgnoreCase(embarked.trim()) ? inputHigh : inputLow;
 
             // embarked-q
-            data.getInput()[7] = embarked.trim().equalsIgnoreCase("q") ? inputHigh : inputLow;
+            data.getInput()[7] = "q".equalsIgnoreCase(embarked.trim()) ? inputHigh : inputLow;
 
             // embarked-s
-            data.getInput()[8] = embarked.trim().equalsIgnoreCase("s") ? inputHigh : inputLow;
+            data.getInput()[8] = "s".equalsIgnoreCase(embarked.trim()) ? inputHigh : inputLow;
 
             // name-mil
             data.getInput()[9] = (name.contains("Col.") || name.contains("Capt.") || name.contains("Major.")) ? inputHigh : inputLow;

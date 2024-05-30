@@ -283,8 +283,8 @@ public class NormalizeDataSet {
      * @return True if missing.
      */
     public static boolean isMissing(String str) {
-        return( str.equals("?") || str.trim().equals("") || str.trim().toUpperCase().equals("NA")
-                || str.trim().toUpperCase().equals("NULL"));
+        return( "?".equals(str) || "".equals(str.trim()) || "NA".equals(str.trim().toUpperCase())
+                || "NULL".equals(str.trim().toUpperCase()));
     }
 
     /**
@@ -684,7 +684,7 @@ public class NormalizeDataSet {
             final Object[] row = this.data.get(rowIndex);
             boolean remove = false;
             for (final Object aRow : row) {
-                if (aRow.toString().equals("?")) {
+                if ("?".equals(aRow.toString())) {
                     remove = true;
                     break;
                 }

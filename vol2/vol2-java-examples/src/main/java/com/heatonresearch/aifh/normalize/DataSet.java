@@ -644,7 +644,7 @@ public class DataSet {
             final Object[] row = data.get(rowIndex);
             boolean remove = false;
             for (final Object aRow : row) {
-                if (aRow.toString().equals("?")) {
+                if ("?".equals(aRow.toString())) {
                     remove = true;
                     break;
                 }
