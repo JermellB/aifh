@@ -28,6 +28,7 @@
  */
 package com.heatonresearch.aifh.examples.ca.mergelife.viewer;
 
+import io.github.pixee.security.ObjectInputFilters;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -83,6 +84,7 @@ public class MultiverseViewer extends JFrame implements ActionListener,
             // load the config file
             final FileInputStream fileIn = new FileInputStream(configFile);
             final ObjectInputStream in = new ObjectInputStream(fileIn);
+            ObjectInputFilters.enableObjectFilterIfUnprotected(in);
             MultiverseViewer.config = (ConfigData) in.readObject();
             in.close();
             fileIn.close();
