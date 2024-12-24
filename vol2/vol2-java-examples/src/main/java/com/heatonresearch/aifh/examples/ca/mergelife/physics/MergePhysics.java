@@ -30,6 +30,7 @@ package com.heatonresearch.aifh.examples.ca.mergelife.physics;
 
 import com.heatonresearch.aifh.examples.ca.mergelife.universe.Universe;
 import com.heatonresearch.aifh.examples.ca.mergelife.universe.UniverseCell;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.*;
 import java.util.Arrays;
@@ -132,7 +133,7 @@ public class MergePhysics implements Physics {
     public void load(final String filename) throws IOException {
         final BufferedReader br = new BufferedReader(new FileReader(filename));
         try {
-            String line = br.readLine();
+            String line = BoundedLineReader.readLine(br, 5_000_000);
             // strip off leading and training braces
             line = line.substring(1);
             line = line.substring(0, line.length() - 1);
