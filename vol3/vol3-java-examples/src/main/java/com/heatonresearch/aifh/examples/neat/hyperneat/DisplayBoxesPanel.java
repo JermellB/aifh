@@ -28,6 +28,7 @@
  */
 package com.heatonresearch.aifh.examples.neat.hyperneat;
 
+import java.security.SecureRandom;
 import org.encog.mathutil.IntPair;
 import org.encog.neural.hyperneat.HyperNEATCODEC;
 import org.encog.neural.hyperneat.substrate.Substrate;
@@ -48,7 +49,7 @@ public class DisplayBoxesPanel extends JPanel {
      * The serial.
      */
     private static final long serialVersionUID = 1L;
-    private final BoxTrialCase testCase = new BoxTrialCase(new Random());
+    private final BoxTrialCase testCase = new BoxTrialCase(new SecureRandom());
     private final NEATPopulation pop;
     private int resolution = BoxTrialCase.BASE_RESOLUTION;
 
@@ -106,7 +107,7 @@ public class DisplayBoxesPanel extends JPanel {
     }
 
     public void createNewCase(int theResolution) {
-        Random r = new Random();
+        Random r = new SecureRandom();
         this.resolution = theResolution;
         this.testCase.initTestCase(r.nextInt(3));
         this.repaint();
