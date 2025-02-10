@@ -32,6 +32,7 @@ import com.heatonresearch.aifh.examples.ca.mergelife.universe.Universe;
 import com.heatonresearch.aifh.examples.ca.mergelife.universe.UniverseCell;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -200,7 +201,7 @@ public class MergePhysics implements Physics {
      */
     @Override
     public void save(final String filename) throws IOException {
-        final BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+        final BufferedWriter out = Files.newBufferedWriter(filename.toPath());
         out.write(Arrays.toString(this.data));
         out.newLine();
         out.close();
