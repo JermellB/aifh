@@ -29,6 +29,8 @@
 package com.heatonresearch.aifh.util;
 
 import com.heatonresearch.aifh.AIFHError;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,7 +51,7 @@ public class FileUtil {
      */
     public static void downloadFile(String url, File path) {
         try {
-            URL website = new URL(url);
+            URL website = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             ReadableByteChannel rbc = Channels.newChannel(website.openStream());
             FileOutputStream fos = new FileOutputStream(path);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
