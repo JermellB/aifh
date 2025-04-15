@@ -28,6 +28,7 @@
  */
 package com.heatonresearch.aifh.examples.neat.hyperneat;
 
+import java.security.SecureRandom;
 import org.encog.mathutil.IntPair;
 import org.encog.ml.CalculateScore;
 import org.encog.ml.MLMethod;
@@ -86,7 +87,7 @@ public class BoxesScore implements CalculateScore {
 
     @Override
     public double calculateScore(MLMethod phenotype) {
-        BoxTrialCase test = new BoxTrialCase(new Random());
+        BoxTrialCase test = new BoxTrialCase(new SecureRandom());
         TrialEvaluation eval = new TrialEvaluation(phenotype, test);
 
         for (int i = 0; i < 3; i++) {
