@@ -31,6 +31,7 @@ package com.heatonresearch.aifh.examples.distance;
 
 import com.heatonresearch.aifh.distance.CalculateDistance;
 import com.heatonresearch.aifh.distance.EuclideanDistance;
+import io.github.pixee.security.BoundedLineReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -309,7 +310,7 @@ public class OCRExample extends JFrame {
 
             this.letterListModel.clear();
 
-            while ((line = r.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(r, 5_000_000)) != null) {
                 final SampleData ds = new SampleData(line.charAt(0),
                         OCRExample.DOWNSAMPLE_WIDTH, OCRExample.DOWNSAMPLE_HEIGHT);
                 this.letterListModel.add(i++, ds);
