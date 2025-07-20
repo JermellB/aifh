@@ -28,6 +28,7 @@
  */
 package com.heatonresearch.aifh.randomize;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -53,7 +54,7 @@ public class BasicGenerateRandom extends AbstractGenerateRandom {
      * Construct a random number generator with a time-based seed.
      */
     public BasicGenerateRandom() {
-        this.rand = new Random();
+        this.rand = new SecureRandom();
     }
 
     /**
